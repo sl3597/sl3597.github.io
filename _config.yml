@@ -26,7 +26,7 @@ author:
   avatar           : "profile.png"
   name             : "Shengwei Liu"
   pronouns         : # example: "he/him"  
-  bio: "M.Eng. ECE student at Cornell Tech. Interested in computer architecture, ASIC/SoC design, and efficient LLM systems."
+  bio: # "M.Eng. ECE student at Cornell Tech. Interested in computer architecture, ASIC/SoC design, and efficient LLM systems."
   location         : "New York, NY, US"
   employer         : "Cornell Tech"
   uri              : # URL
@@ -64,7 +64,7 @@ author:
   goodreads        : # Username
   google_plus      : # Username
   keybase          : # Username
-  instagram        : swliu0127
+  instagram        : #
   lastfm           : # Username
   linkedin         : shengwei127
   mastodon         : # URL
