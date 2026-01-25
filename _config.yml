@@ -25,10 +25,10 @@ author:
   # Biographic information
   avatar           : "profile.png"
   name             : "Shengwei Liu"
-  pronouns         : # example: "she/her"  
-  bio              : "Short biography for the left-hand sidebar"
+  pronouns         : # example: "he/him"  
+  bio: "M.Eng. ECE student at Cornell Tech. Interested in computer architecture, ASIC/SoC design, and efficient LLM systems."
   location         : "New York, NY, US"
-  employer         : "Cornell University"
+  employer         : "Cornell Tech"
   uri              : # URL
   email            : "sl3597@cornell.edu" 
 
@@ -57,7 +57,7 @@ author:
 
   # Social media
   artstation       : # Username
-  bluesky          : "bsky.app" # Replace this with you Bluesky username
+  bluesky          : # "bsky.app" # Replace this with you Bluesky username
   facebook         : # Username
   flickr           : # Username
   foursquare       : # Username
