@@ -10,9 +10,9 @@ redirect_from:
 
 I am an **M.Eng. student in Electrical and Computer Engineering at Cornell Tech, Cornell University**, and currently a **Research Assistant in the Computer Systems Laboratory**, advised by **Prof. Mohamed Abdelfattah**.
 
-My research lies at the intersection of **computer architecture, machine learning systems, and ASIC/SoC design**, with a focus on building **high-performance, resource-efficient systems for LLM inference**. I am particularly interested in **cross-stack co-design**, spanning from quantization algorithms and kernel optimization to memory-centric system architectures.
+My research lies at the intersection of **Computer Architecture, Machine Learning Systems, and ASIC/SoC Design**, with a focus on building **high-performance, resource-efficient systems for LLM inference**. I am particularly interested in **Hardware Software Co-design** across the system stack, ranging from quantization algorithms and kernel optimization to memory-centric system architectures.
 
-Prior to Cornell, I received my **B.Eng. in Electronic and Electrical Engineering with First-Class Honors** from **University College London (UCL)**.
+Prior to Cornell, I received my **B.Eng. in Electronic and Electrical Engineering with First-Class Honors** from **University College London (UCL)**. After graduation, I worked as a **Research Assistant at Tsinghua University** under the supervision of **Prof. Shuwen Deng**, where I conducted research on **CXL and memory systems**.
 
 ---
 
@@ -29,7 +29,7 @@ Prior to Cornell, I received my **B.Eng. in Electronic and Electrical Engineerin
 
 My work focuses on **hardware–software co-design** to bridge the gap between complex ML workloads and efficient hardware execution:
 
-- **LLM Inference Systems** — Low-bit quantization (FP4/MXFP4), numeric formats, decode-stage bottlenecks, and kernel optimization.  
+- **LLM Inference Systems** — Low-bit quantization, numeric formats, decode-stage bottlenecks, and kernel optimization.  
 - **Memory-Centric Computing** — Leveraging **CXL and disaggregated memory** to address the memory wall in large-scale AI systems.  
 - **Distributed Systems** — Designing high-performance **key–value systems** for memory-disaggregated architectures.  
 - **Hardware Design** — End-to-end digital design experience, from **RTL to GDSII**, including synthesis, P&R, and timing closure.  
@@ -39,7 +39,7 @@ My work focuses on **hardware–software co-design** to bridge the gap between c
 ## 💻 Selected Projects
 
 - **GPT-2 Inference Kernel Optimization**  
-  Built a performance-optimized **C-based GPT-2 inference pipeline from scratch**, achieving **3.95× speedup** through **SIMD (AVX2)**, tiling, and memory layout optimization.
+  Built a performance-optimized **C-based GPT-2 inference pipeline**, achieving **3.95× speedup** through **SIMD (AVX2)**, tiling, and memory layout optimization.
 
 - **Lightweight Encryption Engine (ASIC Flow)**  
   Designed a fully pipelined **Simon32/64 cipher engine** in SystemVerilog and took it through the complete ASIC flow (**synthesis, P&R, timing closure**).
