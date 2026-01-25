@@ -17,16 +17,16 @@ Prior to Cornell, I received my B.Eng. in Electronic and Electrical Engineering 
 
 ---
 
-## 🔥 News
+## News
 
 - **Dec. 2025** — Joined the **Computer Systems Laboratory, Cornell University** as a **Research Assistant**, working on **LLM inference acceleration**.  
 - **Nov. 2025** — Our paper *“SHMemora: Protective Key-Value Store on Distributed Shared Memory”* has been accepted to **IEEE ICDE 2026**.  
-- **May 2025** — Joined the **HAS Lab, Tsinghua University** as a **Research Assistant**, focusing on **CXL and memory systems**.  
 - **Jun. 2025** — Graduated from **UCL** with **First-Class Honors**.  
+- **May 2025** — Joined the **HAS Lab, Tsinghua University** as a **Research Assistant**, focusing on **CXL and memory systems**.
 
 ---
 
-## 📝 Research Interests
+## Research Interests
 
 My work focuses on Hardware Software Co-design to bridge the gap between complex ML workloads and efficient hardware execution:
 
@@ -37,7 +37,7 @@ My work focuses on Hardware Software Co-design to bridge the gap between complex
 
 ---
 
-## 💻 Selected Projects
+## Selected Projects
 
 - **GPT-2 Inference Kernel Optimization**  
   Built a performance-optimized C-based GPT-2 inference pipeline, achieving 3.95× speedup through SIMD (AVX2), tiling, and memory layout optimization.
