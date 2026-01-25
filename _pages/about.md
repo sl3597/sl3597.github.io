@@ -20,7 +20,7 @@ Prior to Cornell, I received my B.Eng. in Electronic and Electrical Engineering 
 ## 🔥 News
 
 - **Dec. 2025** — Joined the **Computer Systems Laboratory, Cornell University** as a **Research Assistant**, working on **LLM inference acceleration**.  
-- **Nov. 2025** — Our co-authored paper *“SHMemora: Protective Key-Value Store on Distributed Shared Memory”* has been accepted to **IEEE ICDE 2026**.  
+- **Nov. 2025** — Our paper *“SHMemora: Protective Key-Value Store on Distributed Shared Memory”* has been accepted to **IEEE ICDE 2026**.  
 - **May 2025** — Joined the **HAS Lab, Tsinghua University** as a **Research Assistant**, focusing on **CXL and memory systems**.  
 - **Jun. 2025** — Graduated from **UCL** with **First-Class Honors**.  
 
