@@ -8,8 +8,8 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-site_theme               : "default" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
-title                    : "Shengwei Liu"
+site_theme               : "mint" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
+title                    : "🤞🏻"
 title_separator          : "-"
 name                     : &name "Shengwei Liu"
 description              : &description "M.Eng @ Cornell Tech, EEE @ UCL"   # Update this with a general description of your site, this is the default if not overridden by a page
