@@ -1,30 +1,52 @@
 ---
 permalink: /
-title: "Shengwei Liu"
+title: "About Me"
+excerpt: "About Me"
 author_profile: true
 redirect_from:
   - /about/
   - /about.html
 ---
 
-Hi! I’m **Shengwei Liu**, an **M.Eng. ECE student at Cornell Tech (NYC)**, focusing on **computer architecture**, **ASIC/SoC design**, and **hardware–software co-design for efficient LLM inference**.
+I am an **M.Eng. student in Electrical and Computer Engineering at Cornell Tech, Cornell University**, and currently a **Research Assistant in the Computer Systems Laboratory**, advised by **Prof. Mohamed Abdelfattah**.
 
-I’m currently working on topics including **low-bit quantization (FP4/MXFP4/NVFP4)**, **memory-centric systems (CXL / near-memory computing)**, and **efficient inference kernels**.
+My research lies at the intersection of **computer architecture, machine learning systems, and ASIC/SoC design**, with a focus on building **high-performance, resource-efficient systems for LLM inference**. I am particularly interested in **cross-stack co-design**, spanning from quantization algorithms and kernel optimization to memory-centric system architectures.
+
+Prior to Cornell, I received my **B.Eng. in Electronic and Electrical Engineering with First-Class Honors** from **University College London (UCL)**.
 
 ---
 
-## Interests
-- LLM inference acceleration (quantization / kernel optimization / dataflow)
-- Memory systems (CXL, disaggregated memory, KV systems)
-- Digital/ASIC design (RTL → synthesis → P&R → timing)
+## 🔥 News
 
-## Highlights
-- Research: hardware–software co-design for LLM acceleration; memory-centric computing
-- Projects: GPT-2 inference pipeline in C; SIMD/tiling optimizations; ASIC flow experience
-- Tools: Verilog/SystemVerilog, Python, C/C++, Synopsys DC, Innovus, PrimeTime, gem5
+- **Dec. 2025** — Joined the **Computer Systems Laboratory, Cornell University** as a **Research Assistant**, working on **LLM inference acceleration**.  
+- **Nov. 2025** — Our co-authored paper *“SHMemora: Protective Key-Value Store on Distributed Shared Memory”* has been accepted to **IEEE ICDE 2026**.  
+- **May 2025** — Joined the **HAS Lab, Tsinghua University** as a **Research Assistant**, focusing on **CXL and memory systems**.  
+- **Jun. 2025** — Graduated from **UCL** with **First-Class Honors**.  
 
-## Links
-- **CV:** /cv/
-- **Publications:** /publications/
-- **Projects / Portfolio:** /portfolio/
-- **Contact:** /#contact  <!-- 如果你没有 contact 区块就删掉这行 -->
+---
+
+## 📝 Research Interests
+
+My work focuses on **hardware–software co-design** to bridge the gap between complex ML workloads and efficient hardware execution:
+
+- **LLM Inference Systems** — Low-bit quantization (FP4/MXFP4), numeric formats, decode-stage bottlenecks, and kernel optimization.  
+- **Memory-Centric Computing** — Leveraging **CXL and disaggregated memory** to address the memory wall in large-scale AI systems.  
+- **Distributed Systems** — Designing high-performance **key–value systems** for memory-disaggregated architectures.  
+- **Hardware Design** — End-to-end digital design experience, from **RTL to GDSII**, including synthesis, P&R, and timing closure.  
+
+---
+
+## 💻 Selected Projects
+
+- **GPT-2 Inference Kernel Optimization**  
+  Built a performance-optimized **C-based GPT-2 inference pipeline from scratch**, achieving **3.95× speedup** through **SIMD (AVX2)**, tiling, and memory layout optimization.
+
+- **Lightweight Encryption Engine (ASIC Flow)**  
+  Designed a fully pipelined **Simon32/64 cipher engine** in SystemVerilog and took it through the complete ASIC flow (**synthesis, P&R, timing closure**).
+
+- **Hand Motion Detection System**  
+  Developed a real-time multi-modal (**IMU + PPG**) hand motion detection system deployed on **Arduino Nano 33 IoT**, achieving **94% classification accuracy**.
+
+---
+
+Feel free to reach out via email or connect with me on LinkedIn.
