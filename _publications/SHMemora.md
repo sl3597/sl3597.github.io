@@ -1,7 +1,6 @@
 ---
 title: "SHMemora: Protective Key–Value Store on Distributed Shared Memory"
 collection: publications
-permalink: /publication/2026-05-01-shmemora
 date: 2026-05-01
 venue: "Proceedings of IEEE International Conference on Data Engineering (ICDE)"
 category: conferences
