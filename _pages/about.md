@@ -50,4 +50,4 @@ My work focuses on Hardware Software Co-design to bridge the gap between complex
 
 ---
 
-Feel free to reach out via email or connect with me on LinkedIn.
+Feel free to reach out via [email](sl3597@cornell.edu) or connect with me on [LinkedIn](https://www.linkedin.com/in/shengwei127/).
