@@ -8,8 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-I am an M.Eng. student in Electrical and Computer Engineering at Cornell Tech, Cornell University, and currently a **Research Assistant** in the Computer Systems Laboratory, advised by [**Prof. Mohamed Abdelfattah**](https://www.mohsaied.com/)
-.
+I am an M.Eng. student in Electrical and Computer Engineering at Cornell Tech, Cornell University, and currently a **Research Assistant** in the Computer Systems Laboratory, advised by [**Prof. Mohamed Abdelfattah**](https://www.mohsaied.com/).
 
 My research lies at the intersection of **Computer Architecture, Machine Learning Systems, and ASIC/SoC Design**, with a focus on building high-performance, resource-efficient systems for LLM inference. I am particularly interested in Hardware Software Co-design across the system stack, ranging from quantization algorithms and kernel optimization to memory-centric system architectures.
 
