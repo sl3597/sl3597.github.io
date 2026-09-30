@@ -2,8 +2,10 @@
 title: "SHMemora: Protective Key–Value Store on Distributed Shared Memory"
 collection: publications
 date: 2026-05-01
-venue: "Proceedings of IEEE International Conference on Data Engineering (ICDE)"
+venue: "Proceedings of the 42nd IEEE International Conference on Data Engineering (ICDE 2026)"
 category: conferences
+excerpt: "The first protective multi-host in-memory key-value store on CXL-based shared memory, achieving 3.45× the throughput of Redis with 1.68% overhead for security protection."
+citation: "Jiajun Luo, Siyu Lin, Yunpeng Xu, <b>Shengwei Liu</b>, Jin Xia, Dong Liu, Zheng Liu, Huanchen Zhang, Teng Ma, Shuwen Deng. &quot;SHMemora: Protective Key–Value Store on Distributed Shared Memory.&quot; In <i>Proceedings of the 42nd IEEE International Conference on Data Engineering (ICDE)</i>, 2026."
 ---
 
 **Authors:**  
