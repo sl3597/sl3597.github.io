@@ -21,7 +21,7 @@
     { continent: "North America", country: "United States", flag: "🇺🇸", id: "840", cities: [
       ["New York", 40.7128, -74.0060], ["Washington, D.C.", 38.9072, -77.0369], ["San Francisco", 37.7749, -122.4194],
       ["Los Angeles", 34.0522, -118.2437], ["Las Vegas", 36.1699, -115.1398], ["Miami", 25.7617, -80.1918]] },
-    { continent: "North America", country: "Bahamas", flag: "🇧🇸", id: "044", cities: [["The Beach Club at Bimini", 25.7280, -79.2966]] },
+    { continent: "North America", country: "Bahamas", flag: "🇧🇸", id: "044", cities: [["Bimini", 25.7280, -79.2966]] },
     { continent: "North America", country: "Turks and Caicos", flag: "🇹🇨", id: "796", cities: [["Grand Turk", 21.4675, -71.1389]] },
     { continent: "Asia", country: "China", flag: "🇨🇳", id: "156", cities: [
       ["Beijing", 39.9042, 116.4074], ["Shanghai", 31.2304, 121.4737], ["Guangzhou", 23.1291, 113.2644],
@@ -40,9 +40,13 @@
   var worldUrl = script.getAttribute("data-world");
 
   var byId = {};
-  PLACES.forEach(function (p) { byId[p.id] = p; });
+  PLACES.forEach(function (p) {
+    byId[p.id] = p;
+    p.cities.sort(function (x, y) { return x[0].localeCompare(y[0], "en"); });
+  });
   var continents = [];
   PLACES.forEach(function (p) { if (continents.indexOf(p.continent) === -1) continents.push(p.continent); });
+  continents.sort();
 
   function isDark() { return document.documentElement.getAttribute("data-theme") === "dark"; }
   function accent() {
@@ -309,7 +313,9 @@
       h.textContent = cont;
       section.appendChild(h);
 
-      PLACES.filter(function (p) { return p.continent === cont; }).forEach(function (p) {
+      PLACES.filter(function (p) { return p.continent === cont; })
+        .sort(function (x, y) { return x.country.localeCompare(y.country, "en"); })
+        .forEach(function (p) {
         var row = document.createElement("div");
         row.className = "wl-row";
 
