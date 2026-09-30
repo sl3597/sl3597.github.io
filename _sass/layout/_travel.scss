@@ -58,6 +58,10 @@ html[data-theme="dark"] {
 
 /* Continent filters */
 
+.wl-filters[hidden] {
+  display: none;
+}
+
 .wl-filters {
   display: flex;
   flex-wrap: wrap;

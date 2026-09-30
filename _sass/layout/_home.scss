@@ -7,29 +7,6 @@
   line-height: 1.7;
 }
 
-/* Recent updates */
-
-.home-updates {
-  list-style: none;
-  margin: 0 0 1em;
-  padding: 0;
-
-  li {
-    display: flex;
-    gap: 1em;
-    align-items: baseline;
-    margin-bottom: 0.5em;
-  }
-}
-
-.home-date {
-  flex: 0 0 6.5em;
-  font-size: 0.8em;
-  font-weight: bold;
-  color: var(--global-base-color);
-  white-space: nowrap;
-}
-
 /* Research interest cards */
 
 .home-cards {
@@ -141,6 +118,7 @@
   white-space: nowrap;
 }
 
+.page__content a.home-pub__title,
 .home-pub__title {
   font-weight: bold;
   text-decoration: none;
@@ -158,10 +136,4 @@
 .home-pub__venue {
   font-style: italic;
   color: var(--global-text-color-light);
-}
-
-.home-contact {
-  margin-top: 2em;
-  padding-top: 1em;
-  border-top: 1px solid var(--global-border-color);
 }

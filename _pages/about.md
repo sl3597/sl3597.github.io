@@ -9,21 +9,8 @@ redirect_from:
 ---
 
 <p class="home-lead">
-I'm an incoming <strong>Applied Physical AI Researcher</strong> at <strong>Siemens</strong>, where I'll work on bringing multimodal foundation models and robot learning into real industrial systems. My background is in <strong>ML systems</strong> — quantization, GPU kernels, and on-device deployment.
+I work at the intersection of <strong>Physical AI</strong> and <strong>ML systems</strong> — bringing multimodal foundation models and robot learning into real industrial systems, and making large models fast and efficient on real hardware.
 </p>
-
-<p class="home-lead">
-I hold an M.Eng. in Electrical and Computer Engineering from <strong>Cornell Tech</strong> and a B.Eng. in Electronic and Electrical Engineering from <strong>University College London</strong>.
-</p>
-
-## Recent Updates
-
-<ul class="home-updates">
-  <li><span class="home-date">Oct 2026</span> <span>Joining <strong>Siemens</strong> as an Applied Physical AI Researcher.</span></li>
-  <li><span class="home-date">Jul 2026</span> <span>Joined <strong>DJI Automotive</strong> (Zhuoyu Technology) as a High-Performance Computing Engineer.</span></li>
-  <li><span class="home-date">May 2026</span> <span>Graduated from <strong>Cornell Tech</strong> with an M.Eng. in ECE.</span></li>
-  <li><span class="home-date">Jun 2025</span> <span>Graduated from <strong>UCL</strong> with a B.Eng. in EEE.</span></li>
-</ul>
 
 ## Research Interests
 
@@ -90,5 +77,3 @@ I hold an M.Eng. in Electrical and Computer Engineering from <strong>Cornell Tec
     <div class="home-pub__venue">IEEE International Conference on Data Engineering (ICDE), 2026</div>
   </div>
 </div>
-
-<p class="home-contact">Feel free to reach out via <a href="mailto:willsl050127@gmail.com">email</a> or connect with me on <a href="https://www.linkedin.com/in/shengwei127/">LinkedIn</a>.</p>

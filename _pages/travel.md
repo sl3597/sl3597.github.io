@@ -16,7 +16,8 @@ excerpt: "The more I see, the more I learn — places Shengwei Liu has visited."
   <div id="wl-stats" class="wl-stats"></div>
 </div>
 
-<div id="wl-filters" class="wl-filters" role="tablist" aria-label="Filter by continent"></div>
+<!-- Continent filters are hidden for now; remove "hidden" to show them again. -->
+<div id="wl-filters" class="wl-filters" role="tablist" aria-label="Filter by continent" hidden></div>
 
 <div class="wl-map-card">
   <div id="wl-map" class="wl-map" aria-label="Interactive globe of places visited"></div>
