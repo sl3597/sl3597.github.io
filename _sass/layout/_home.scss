@@ -1,0 +1,159 @@
+/* ==========================================================================
+   HOME (About Me) PAGE COMPONENTS
+   ========================================================================== */
+
+.home-lead {
+  font-size: 1.05em;
+  line-height: 1.7;
+}
+
+/* Recent updates */
+
+.home-updates {
+  list-style: none;
+  margin: 0 0 1em;
+  padding: 0;
+
+  li {
+    display: flex;
+    gap: 1em;
+    align-items: baseline;
+    margin-bottom: 0.5em;
+  }
+}
+
+.home-date {
+  flex: 0 0 5.2em;
+  font-size: 0.8em;
+  font-weight: bold;
+  color: var(--global-base-color);
+  white-space: nowrap;
+}
+
+/* Research interest cards */
+
+.home-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1em;
+  margin-bottom: 1.5em;
+}
+
+.home-card {
+  padding: 1em 1.1em;
+  border: 1px solid var(--global-border-color);
+  border-left: 3px solid var(--global-base-color);
+  border-radius: 6px;
+
+  p {
+    margin: 0.4em 0 0;
+    font-size: 0.85em;
+    line-height: 1.55;
+  }
+}
+
+.home-card__title {
+  font-weight: bold;
+
+  i {
+    margin-right: 0.5em;
+    color: var(--global-base-color);
+  }
+}
+
+/* Experience timeline */
+
+.home-timeline {
+  position: relative;
+  margin: 0 0 1.5em 0.4em;
+  padding-left: 1.4em;
+  border-left: 2px solid var(--global-border-color);
+}
+
+.home-tl-item {
+  position: relative;
+  padding-bottom: 1.3em;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: calc(-1.4em - 6px);
+    top: 0.45em;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--global-base-color);
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+
+  ul {
+    margin: 0.4em 0 0;
+    padding-left: 1.1em;
+    font-size: 0.85em;
+    line-height: 1.55;
+  }
+
+  li {
+    margin-bottom: 0.2em;
+  }
+}
+
+.home-tl-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0 1em;
+}
+
+.home-tl-date,
+.home-tl-sub {
+  font-size: 0.8em;
+  color: var(--global-text-color-light);
+}
+
+.home-tl-date {
+  white-space: nowrap;
+}
+
+/* Publications */
+
+.home-pub {
+  display: flex;
+  gap: 1em;
+  align-items: flex-start;
+  margin-bottom: 1.5em;
+}
+
+.home-badge {
+  flex: 0 0 auto;
+  padding: 0.2em 0.6em;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: bold;
+  color: #fff;
+  background: var(--global-base-color);
+  white-space: nowrap;
+}
+
+.home-pub__title {
+  font-weight: bold;
+}
+
+.home-pub__authors,
+.home-pub__venue {
+  font-size: 0.85em;
+}
+
+.home-pub__venue {
+  font-style: italic;
+  color: var(--global-text-color-light);
+}
+
+.home-contact {
+  margin-top: 2em;
+  padding-top: 1em;
+  border-top: 1px solid var(--global-border-color);
+}
