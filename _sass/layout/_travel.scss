@@ -148,6 +148,25 @@ html[data-theme="dark"] {
   }
 }
 
+.wl-credit {
+  position: absolute;
+  right: 8px;
+  bottom: 4px;
+  z-index: 2;
+  font-size: 9px;
+  color: var(--global-text-color);
+  opacity: 0.5;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
 .wl-legend {
   position: absolute;
   top: 12px;

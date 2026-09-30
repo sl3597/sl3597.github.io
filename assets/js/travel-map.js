@@ -70,7 +70,7 @@
     zoom: HOME.zoom,
     minZoom: 0.8,
     maxZoom: 12,
-    attributionControl: { compact: true },
+    attributionControl: false,
     cooperativeGestures: false,
     scrollZoom: false,
     dragRotate: false,

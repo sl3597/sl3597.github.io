@@ -241,6 +241,10 @@
   }
 }
 
+.author__bio-icon--blank {
+  visibility: hidden;
+}
+
 .author__bio-text {
   display: flex;
   flex-direction: column;

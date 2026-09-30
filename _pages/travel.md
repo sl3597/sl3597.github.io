@@ -24,6 +24,7 @@ excerpt: "The more I see, the more I learn — places Shengwei Liu has visited."
     <span><i class="wl-legend__swatch"></i>Visited</span>
     <span><i class="wl-legend__pin"></i>City</span>
   </div>
+  <div class="wl-credit"><a href="https://openfreemap.org" target="_blank" rel="noopener">OpenFreeMap</a> © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a></div>
   <button id="wl-reset" class="wl-reset" type="button" title="Back to globe" aria-label="Back to globe">&#8634;</button>
 </div>
 

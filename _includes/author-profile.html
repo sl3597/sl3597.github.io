@@ -19,9 +19,11 @@
     {% if author.pronouns %}<p class="author__pronouns">{{ author.pronouns }}</p>{% endif %}
     {% if author.bio_items %}
       <ul class="author__bio-list">
+        {% assign prev_icon = "" %}
         {% for item in author.bio_items %}
           <li>
-            <i class="fas fa-fw fa-{{ item.icon }}" aria-hidden="true"></i>
+            {% if item.icon == prev_icon %}<i class="fas fa-fw author__bio-icon--blank" aria-hidden="true"></i>{% else %}<i class="fas fa-fw fa-{{ item.icon }}" aria-hidden="true"></i>{% endif %}
+            {% assign prev_icon = item.icon %}
             <span class="author__bio-text">
               <span class="author__bio-title">{{ item.title }}</span>
               <span class="author__bio-org">{{ item.org }}{% if item.tag %} <span class="author__bio-tag">{{ item.tag }}</span>{% endif %}</span>
