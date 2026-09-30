@@ -36,6 +36,7 @@ I am interested in **Physical AI** — bringing multimodal foundation models out
 - **Multimodal Foundation Models** — Data preparation, fine-tuning, and evaluation of LLMs, VLMs, and diffusion models, with an eye toward perception-to-action pipelines.  
 - **Efficient Inference & Deployment** — Low-bit quantization, custom GPU kernels (Triton), and model compilation for real-time inference on edge, robotic, and in-vehicle platforms.  
 - **Hardware–Software Co-design** — Memory-centric systems (CXL, disaggregated memory) and digital hardware design, from RTL to GDSII, to understand efficiency bottlenecks across the full stack.
+
 ---
 
 ## Experience
@@ -62,19 +63,6 @@ I am interested in **Physical AI** — bringing multimodal foundation models out
 - **SHMemora: Protective Key–Value Store on Distributed Shared Memory**  
   Jiajun Luo, Siyu Lin, Yunpeng Xu, **Shengwei Liu**, Jin Xia, Dong Liu, Zheng Liu, Huanchen Zhang, Teng Ma, Shuwen Deng  
   *IEEE International Conference on Data Engineering (**ICDE**), 2026* · [[Details]](/publications/SHMemora/)
-
----
-
-## Selected Projects
-
-- **GPU LLM Inference Optimization** (Python, PyTorch, Triton)  
-  Optimized a sparse-attention transformer inference pipeline with custom Triton kernels for block-sparse attention and fused RMSNorm, achieving 2.5× decode throughput and 4.4× prefill speedup; handling GQA grouping inside the kernel cut decode memory bandwidth by 7×.
-
-- **Embedded Keyword Spotting & Model Compression** (Python, Embedded C)  
-  Trained and deployed a TinyConv keyword-spotting model on an Arduino Nano 33 BLE (93.6% accuracy, ~110 ms latency), with near-lossless INT8 quantization (PTQ/QAT) and structured pruning reducing FLOPs by up to 8×.
-
-- **Hand Motion Detection using IMU and PPG Sensors** (Python, Embedded C)  
-  Developed a real-time multi-modal (IMU + PPG) hand motion detection system with a stacked LSTM deployed on an Arduino Nano 33 IoT, achieving 94.05% accuracy and 0.94 macro F1-score.
 
 ---
 
