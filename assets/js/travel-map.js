@@ -1,4 +1,4 @@
-/* Wanderlust map: a self-contained vector world map (no tile server or API key). */
+/* Wanderlust: 3D globe (MapLibre + OpenFreeMap, no API key) with visited countries and cities. */
 (function () {
   /* id = ISO 3166-1 numeric code used by world-atlas. To add a place, add a city (name, lat, lng) or a country entry. */
   var PLACES = [
@@ -28,145 +28,220 @@
   ];
 
   var el = document.getElementById("wl-map");
-  if (!el || typeof L === "undefined" || typeof topojson === "undefined") return;
+  if (!el || typeof maplibregl === "undefined") return;
 
   var script = document.currentScript || document.querySelector("script[data-world]");
   var worldUrl = script.getAttribute("data-world");
 
   var byId = {};
   PLACES.forEach(function (p) { byId[p.id] = p; });
-
   var continents = [];
   PLACES.forEach(function (p) { if (continents.indexOf(p.continent) === -1) continents.push(p.continent); });
 
-  function cssVar(name, fallback) {
-    return getComputedStyle(document.documentElement).getPropertyValue(name).trim() || fallback;
+  function isDark() { return document.documentElement.getAttribute("data-theme") === "dark"; }
+  function accent() {
+    return getComputedStyle(document.documentElement).getPropertyValue("--global-base-color").trim() || "#2f7f93";
+  }
+  function styleUrl() {
+    return "https://tiles.openfreemap.org/styles/" + (isDark() ? "dark" : "positron");
   }
 
-  /* ---------- Map ---------- */
+  var HOME = { center: [60, 28], zoom: 2.05 };
 
-  var HOME = [[-45, -135], [70, 150]];
-  var map = L.map(el, {
-    zoomSnap: 0.25,
-    minZoom: 1,
-    maxZoom: 8,
-    scrollWheelZoom: false,
-    attributionControl: false,
-    zoomControl: false,
-    maxBounds: [[-65, -200], [85, 200]],
-    maxBoundsViscosity: 0.8
+  var map = new maplibregl.Map({
+    container: el,
+    style: styleUrl(),
+    center: HOME.center,
+    zoom: HOME.zoom,
+    minZoom: 0.8,
+    maxZoom: 12,
+    attributionControl: { compact: true },
+    cooperativeGestures: false,
+    scrollZoom: false,
+    dragRotate: false,
+    pitchWithRotate: false,
+    renderWorldCopies: false
   });
-  map.fitBounds(HOME);
-  L.control.zoom({ position: "bottomleft" }).addTo(map);
+  map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "bottom-left");
 
-  /* Only zoom with the scroll wheel after the map is clicked, so the page still scrolls normally. */
-  map.on("click", function () { map.scrollWheelZoom.enable(); });
-  el.addEventListener("mouseleave", function () { map.scrollWheelZoom.disable(); });
+  /* Scroll-zoom only after the map is clicked, so the page still scrolls normally. */
+  map.on("click", function () { map.scrollZoom.enable(); });
+  el.addEventListener("mouseleave", function () { map.scrollZoom.disable(); });
 
-  var Reset = L.Control.extend({
-    options: { position: "bottomleft" },
-    onAdd: function () {
-      var bar = L.DomUtil.create("div", "leaflet-bar");
-      var btn = L.DomUtil.create("a", "wl-reset", bar);
-      btn.href = "#";
-      btn.title = "Reset view";
-      btn.setAttribute("role", "button");
-      btn.innerHTML = "&#8634;";
-      L.DomEvent.on(btn, "click", function (e) {
-        L.DomEvent.preventDefault(e);
-        L.DomEvent.stopPropagation(e);
-        setFilter("All");
-      });
-      return bar;
-    }
-  });
-  map.addControl(new Reset());
+  /* ---------- Gentle auto-rotation until the visitor interacts ---------- */
 
-  /* Faint graticule every 30 degrees. */
-  var graticule = L.layerGroup().addTo(map);
-  function drawGraticule() {
-    graticule.clearLayers();
-    var style = { color: cssVar("--wl-grid", "#c9dde3"), weight: 0.6, dashArray: "2 4", interactive: false };
-    for (var lat = -60; lat <= 60; lat += 30) graticule.addLayer(L.polyline([[lat, -180], [lat, 180]], style));
-    for (var lng = -180; lng <= 180; lng += 30) graticule.addLayer(L.polyline([[-65, lng], [85, lng]], style));
+  var spinning = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function spin() {
+    if (!spinning || map.getZoom() > 2.5) return;
+    var c = map.getCenter();
+    map.easeTo({ center: [c.lng + 12, c.lat], duration: 1000, easing: function (t) { return t; } });
   }
-  drawGraticule();
+  function stopSpin() { spinning = false; }
+  map.on("moveend", spin);
+  ["mousedown", "touchstart", "wheel", "dragstart"].forEach(function (ev) { map.on(ev, stopSpin); });
 
-  var countryLayer = null;
-  var countryLayers = {};
+  /* ---------- Visited-country highlight (self-hosted country shapes) ---------- */
 
-  function countryStyle(feature) {
-    var visited = !!byId[String(feature.id)];
-    var accent = cssVar("--global-base-color", "#2f7f93");
-    return {
-      color: visited ? accent : cssVar("--wl-border", "#ffffff"),
-      weight: visited ? 1 : 0.6,
-      fillColor: visited ? accent : cssVar("--wl-land", "#dfe5e8"),
-      fillOpacity: visited ? 0.62 : 1
-    };
-  }
-
-  function cityNames(p) {
-    return p.cities.map(function (c) { return c[0]; }).join(" · ");
-  }
-
-  fetch(worldUrl)
+  var countriesGeo = null;
+  var worldPromise = fetch(worldUrl)
     .then(function (r) { return r.json(); })
     .then(function (world) {
       var geo = topojson.feature(world, world.objects.countries);
-      geo.features = geo.features.filter(function (f) { return String(f.id) !== "010"; });
-      countryLayer = L.geoJSON(geo, {
-        style: countryStyle,
-        onEachFeature: function (feature, layer) {
-          var p = byId[String(feature.id)];
-          if (!p) return;
-          countryLayers[p.id] = layer;
-          layer.bindTooltip(
-            "<strong>" + p.flag + " " + p.country + "</strong><br><span>" + cityNames(p) + "</span>",
-            { sticky: true, className: "wl-tip" }
-          );
-          layer.on("mouseover", function () { layer.setStyle({ fillOpacity: 0.85, weight: 1.6 }); });
-          layer.on("mouseout", function () { countryLayer.resetStyle(layer); });
-          layer.on("click", function () { flyToCountry(p); });
-        }
-      }).addTo(map);
-      addPins();
+      geo.features = geo.features.filter(function (f) { return byId[String(f.id)]; });
+      geo.features.forEach(function (f) {
+        var p = byId[String(f.id)];
+        f.id = Number(f.id);
+        f.properties = { name: p.country, flag: p.flag, cities: p.cities.map(function (c) { return c[0]; }).join(" · ") };
+      });
+      countriesGeo = geo;
+      return geo;
     })
-    .catch(function () {
-      el.classList.add("wl-map--error");
-      addPins();
-    });
+    .catch(function () { return null; });
 
-  function addPins() {
-    var icon = L.divIcon({ className: "wl-pin", html: "<span></span>", iconSize: [12, 12] });
+  function citiesGeo() {
+    var feats = [];
     PLACES.forEach(function (p) {
       p.cities.forEach(function (c) {
-        L.marker([c[1], c[2]], { icon: icon, riseOnHover: true, keyboard: false })
-          .bindTooltip("<strong>" + c[0] + "</strong><br><span>" + p.flag + " " + p.country + "</span>",
-            { direction: "top", offset: [0, -6], className: "wl-tip" })
-          .addTo(map);
+        feats.push({ type: "Feature", properties: { name: c[0], country: p.country, flag: p.flag },
+          geometry: { type: "Point", coordinates: [c[2], c[1]] } });
       });
+    });
+    return { type: "FeatureCollection", features: feats };
+  }
+
+  function firstSymbolLayer() {
+    var layers = map.getStyle().layers;
+    for (var i = 0; i < layers.length; i++) if (layers[i].type === "symbol") return layers[i].id;
+    return undefined;
+  }
+
+  /* Cleaner basemap: English labels only, no hillshade. */
+  function tidyBasemap() {
+    map.getStyle().layers.forEach(function (l) {
+      if (l.type === "raster" || l.type === "hillshade") map.setLayoutProperty(l.id, "visibility", "none");
+      if (l.type === "fill" && /^water/.test(l.id)) map.setPaintProperty(l.id, "fill-color", isDark() ? "#16232d" : "#cfe4ee");
+      if (l.type === "background") map.setPaintProperty(l.id, "background-color", isDark() ? "#2a2f33" : "#f6f6f3");
+      if (l.type === "symbol" && l.layout && l.layout["text-field"]) {
+        map.setLayoutProperty(l.id, "text-field", ["coalesce", ["get", "name:en"], ["get", "name_en"], ["get", "name"]]);
+      }
     });
   }
 
-  function citiesBounds(list) {
-    var pts = [];
-    list.forEach(function (p) { p.cities.forEach(function (c) { pts.push([c[1], c[2]]); }); });
-    return L.latLngBounds(pts);
+  function addOverlays() {
+    tidyBasemap();
+    map.setProjection({ type: "globe" });
+    if (map.setSky) {
+      map.setSky({
+        "sky-color": isDark() ? "#0f1a24" : "#e6f2f8",
+        "horizon-color": isDark() ? "#23394a" : "#ffffff",
+        "atmosphere-blend": ["interpolate", ["linear"], ["zoom"], 0, 1, 5, 1, 7, 0]
+      });
+    }
+    var before = firstSymbolLayer();
+    var a = accent();
+
+    worldPromise.then(function (geo) {
+      if (!geo || map.getSource("visited")) return;
+      map.addSource("visited", { type: "geojson", data: geo });
+      map.addLayer({ id: "visited-fill", type: "fill", source: "visited",
+        paint: { "fill-color": a, "fill-opacity": ["case", ["boolean", ["feature-state", "hover"], false], isDark() ? 0.75 : 0.55, isDark() ? 0.5 : 0.32] } }, before);
+      map.addLayer({ id: "visited-line", type: "line", source: "visited",
+        paint: { "line-color": a, "line-width": 1, "line-opacity": isDark() ? 1 : 0.8 } }, before);
+      bindCountryHover();
+    });
+
+    if (!map.getSource("cities")) {
+      map.addSource("cities", { type: "geojson", data: citiesGeo() });
+      map.addLayer({ id: "city-halo", type: "circle", source: "cities",
+        paint: { "circle-radius": ["interpolate", ["linear"], ["zoom"], 1, 6, 6, 12], "circle-color": "#ef6b4a", "circle-opacity": 0.22 } });
+      map.addLayer({ id: "city-dot", type: "circle", source: "cities",
+        paint: { "circle-radius": ["interpolate", ["linear"], ["zoom"], 1, 3, 6, 6], "circle-color": "#ef6b4a",
+          "circle-stroke-color": "#ffffff", "circle-stroke-width": 1.5 } });
+      map.addLayer({ id: "city-label", type: "symbol", source: "cities", minzoom: 4,
+        layout: { "text-field": ["get", "name"], "text-font": ["Noto Sans Regular"], "text-size": 12,
+          "text-offset": [0, 1.1], "text-anchor": "top" },
+        paint: { "text-color": isDark() ? "#f1f1f1" : "#333333", "text-halo-color": isDark() ? "#000000" : "#ffffff", "text-halo-width": 1.2 } });
+      bindCityHover();
+    }
   }
 
-  function flyToCountry(p) {
-    var layer = countryLayers[p.id];
-    var b = citiesBounds([p]);
-    /* Use the country shape unless it is huge or spans the antimeridian (e.g. the US with Alaska). */
-    if (layer && p.id !== "840") b = layer.getBounds();
-    map.flyToBounds(b.pad(0.3), { duration: 1, maxZoom: p.cities.length > 1 ? 6 : 7 });
+  var popup = new maplibregl.Popup({ closeButton: false, closeOnClick: false, className: "wl-popup", offset: 10 });
+  var hovered = null;
+  var bound = { country: false, city: false };
+
+  function bindCountryHover() {
+    if (bound.country) return;
+    bound.country = true;
+    map.on("mousemove", "visited-fill", function (e) {
+      if (!e.features.length || map.getLayer("city-dot") && map.queryRenderedFeatures(e.point, { layers: ["city-dot"] }).length) return;
+      var f = e.features[0];
+      if (hovered !== null) map.setFeatureState({ source: "visited", id: hovered }, { hover: false });
+      hovered = f.id;
+      map.setFeatureState({ source: "visited", id: hovered }, { hover: true });
+      map.getCanvas().style.cursor = "pointer";
+      popup.setLngLat(e.lngLat).setHTML("<strong>" + f.properties.flag + " " + f.properties.name + "</strong><br><span>" +
+        f.properties.cities + "</span>").addTo(map);
+    });
+    map.on("mouseleave", "visited-fill", function () {
+      if (hovered !== null) map.setFeatureState({ source: "visited", id: hovered }, { hover: false });
+      hovered = null;
+      map.getCanvas().style.cursor = "";
+      popup.remove();
+    });
+    map.on("click", "visited-fill", function (e) {
+      var p = PLACES.filter(function (x) { return x.country === e.features[0].properties.name; })[0];
+      if (p) flyToCountry(p);
+    });
   }
 
+  function bindCityHover() {
+    if (bound.city) return;
+    bound.city = true;
+    map.on("mouseenter", "city-dot", function (e) {
+      var f = e.features[0];
+      map.getCanvas().style.cursor = "pointer";
+      popup.setLngLat(f.geometry.coordinates).setHTML("<strong>" + f.properties.name + "</strong><br><span>" +
+        f.properties.flag + " " + f.properties.country + "</span>").addTo(map);
+    });
+    map.on("mouseleave", "city-dot", function () { map.getCanvas().style.cursor = ""; popup.remove(); });
+    map.on("click", "city-dot", function (e) {
+      stopSpin();
+      map.flyTo({ center: e.features[0].geometry.coordinates, zoom: 8, duration: 1600 });
+    });
+  }
+
+  map.on("style.load", addOverlays);
+  map.on("error", function () { /* Tile hiccups should not break the page. */ });
+
+  /* Follow the site's light/dark toggle. */
   new MutationObserver(function () {
-    if (countryLayer) countryLayer.setStyle(countryStyle);
-    drawGraticule();
+    bound = { country: false, city: false };
+    map.setStyle(styleUrl());
   }).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+
+  /* ---------- Camera helpers ---------- */
+
+  function boundsOf(points) {
+    var b = new maplibregl.LngLatBounds();
+    points.forEach(function (pt) { b.extend(pt); });
+    return b;
+  }
+  function citiesPoints(list) {
+    var pts = [];
+    list.forEach(function (p) { p.cities.forEach(function (c) { pts.push([c[2], c[1]]); }); });
+    return pts;
+  }
+  function flyToCountry(p) {
+    stopSpin();
+    if (p.cities.length === 1) {
+      map.flyTo({ center: [p.cities[0][2], p.cities[0][1]], zoom: 6, duration: 1600 });
+    } else {
+      map.fitBounds(boundsOf(citiesPoints([p])), { padding: 80, maxZoom: 7, duration: 1600 });
+    }
+  }
+  function flyHome() {
+    map.flyTo({ center: HOME.center, zoom: HOME.zoom, duration: 1600 });
+  }
 
   /* ---------- Stats ---------- */
 
@@ -189,16 +264,17 @@
   var cards = [];
 
   function setFilter(name) {
+    stopSpin();
     Object.keys(buttons).forEach(function (k) {
       buttons[k].classList.toggle("is-active", k === name);
       buttons[k].setAttribute("aria-selected", k === name ? "true" : "false");
     });
     cards.forEach(function (c) { c.el.hidden = !(name === "All" || c.place.continent === name); });
     if (name === "All") {
-      map.flyToBounds(HOME, { duration: 0.9 });
+      flyHome();
     } else {
       var group = PLACES.filter(function (p) { return p.continent === name; });
-      map.flyToBounds(citiesBounds(group).pad(0.25), { duration: 1, maxZoom: 5 });
+      map.fitBounds(boundsOf(citiesPoints(group)), { padding: 70, maxZoom: 5, duration: 1600 });
     }
   }
 
@@ -242,8 +318,9 @@
         chip.className = "wl-chip";
         chip.textContent = c[0];
         chip.addEventListener("click", function () {
+          stopSpin();
           el.scrollIntoView({ behavior: "smooth", block: "center" });
-          map.flyTo([c[1], c[2]], 7, { duration: 1.2 });
+          map.flyTo({ center: [c[2], c[1]], zoom: 9, duration: 1800 });
         });
         chips.appendChild(chip);
       });
@@ -254,4 +331,8 @@
       cards.push({ el: card, place: p });
     });
   }
+
+  /* Reset button inside the map. */
+  var reset = document.getElementById("wl-reset");
+  if (reset) reset.addEventListener("click", function () { setFilter("All"); });
 })();

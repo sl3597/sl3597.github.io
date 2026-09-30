@@ -9,26 +9,27 @@ author_profile: true
 excerpt: "Seeing the world, one city at a time — places Shengwei Liu has visited."
 ---
 
-<link rel="stylesheet" href="{{ site.baseurl }}/assets/lib/leaflet/leaflet.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@5.24.0/dist/maplibre-gl.css">
 
 <div class="wl-hero">
-  <p class="wl-hero__title">Seeing the world, one city at a time.</p>
+  <div class="wl-hero__title">Seeing the world, one city at a time.</div>
   <div id="wl-stats" class="wl-stats"></div>
 </div>
 
 <div id="wl-filters" class="wl-filters" role="tablist" aria-label="Filter by continent"></div>
 
 <div class="wl-map-card">
-  <div id="wl-map" class="wl-map" aria-label="World map of places visited"></div>
+  <div id="wl-map" class="wl-map" aria-label="Interactive globe of places visited"></div>
   <div class="wl-legend">
     <span><i class="wl-legend__swatch"></i>Visited</span>
     <span><i class="wl-legend__pin"></i>City</span>
   </div>
+  <button id="wl-reset" class="wl-reset" type="button" title="Back to globe" aria-label="Back to globe">&#8634;</button>
 </div>
-<p class="wl-hint">Drag to explore · click the map to zoom with your scroll wheel · tap a country or city below to fly there</p>
+<div class="wl-hint">Drag to spin the globe · click the map to zoom with your scroll wheel · tap a country or city to fly there</div>
 
 <div id="wl-list" class="wl-list"></div>
 
-<script src="{{ site.baseurl }}/assets/lib/leaflet/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/maplibre-gl@5.24.0/dist/maplibre-gl.js"></script>
 <script src="{{ site.baseurl }}/assets/lib/topojson-client.min.js"></script>
 <script src="{{ site.baseurl }}/assets/js/travel-map.js" data-world="{{ site.baseurl }}/assets/data/countries-50m.json"></script>
