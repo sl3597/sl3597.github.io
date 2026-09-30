@@ -217,6 +217,58 @@
   }
 }
 
+.author__bio-list {
+  margin: 0.4em 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: $type-size-5;
+
+  @include breakpoint($large) {
+    margin: 10px 0 20px;
+  }
+
+  li {
+    display: flex;
+    gap: 0.5em;
+    align-items: flex-start;
+    margin-bottom: 0.55em;
+    line-height: 1.35;
+  }
+
+  i {
+    margin-top: 0.2em;
+    color: var(--global-base-color);
+  }
+}
+
+.author__bio-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.author__bio-title {
+  font-weight: bold;
+  color: var(--global-text-color);
+}
+
+.author__bio-org {
+  color: var(--global-text-color);
+  opacity: 0.75;
+}
+
+.author__bio-tag {
+  display: inline-block;
+  margin-left: 0.25em;
+  padding: 0 0.45em;
+  border-radius: 999px;
+  font-size: 0.8em;
+  font-weight: normal;
+  line-height: 1.5;
+  color: #fff;
+  background: var(--global-base-color);
+  vertical-align: 1px;
+}
+
 .author__urls-wrapper {
   position: relative;
   display: table-cell;

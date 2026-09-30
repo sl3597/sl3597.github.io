@@ -17,7 +17,19 @@
   <div class="author__content">
     <h3 class="author__name">{{ author.name }}</h3>
     {% if author.pronouns %}<p class="author__pronouns">{{ author.pronouns }}</p>{% endif %}
-    {% if author.bio %}<p class="author__bio">{{ author.bio }}</p>{% endif %}
+    {% if author.bio_items %}
+      <ul class="author__bio-list">
+        {% for item in author.bio_items %}
+          <li>
+            <i class="fas fa-fw fa-{{ item.icon }}" aria-hidden="true"></i>
+            <span class="author__bio-text">
+              <span class="author__bio-title">{{ item.title }}</span>
+              <span class="author__bio-org">{{ item.org }}{% if item.tag %} <span class="author__bio-tag">{{ item.tag }}</span>{% endif %}</span>
+            </span>
+          </li>
+        {% endfor %}
+      </ul>
+    {% elsif author.bio %}<p class="author__bio">{{ author.bio }}</p>{% endif %}
   </div>
 
   <div class="author__urls-wrapper">

@@ -27,6 +27,17 @@ author:
   name             : "Shengwei Liu"
   pronouns         : # example: "he/him"  
   bio: "Incoming Applied Physical AI Researcher at Siemens | M.Eng ECE at Cornell Tech | B.Eng EEE at UCL"
+  bio_items: # structured version of the bio shown in the sidebar
+    - icon: "briefcase"
+      title: "Applied Physical AI Researcher"
+      org: "Siemens"
+      tag: "Incoming"
+    - icon: "graduation-cap"
+      title: "M.Eng ECE"
+      org: "Cornell Tech"
+    - icon: "graduation-cap"
+      title: "B.Eng EEE"
+      org: "UCL"
   location         : "Suzhou, China"
   employer         : # "Siemens"
   uri              : # URL
