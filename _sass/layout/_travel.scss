@@ -208,6 +208,10 @@ html[data-theme="dark"] {
   margin: 1.4em 0 1.5em;
 }
 
+.wl-list[hidden] {
+  display: none;
+}
+
 .wl-group {
   margin-bottom: 1.2em;
 

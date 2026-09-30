@@ -27,7 +27,8 @@ excerpt: "The more I see, the more I learn — places Shengwei Liu has visited."
   <button id="wl-reset" class="wl-reset" type="button" title="Back to globe" aria-label="Back to globe">&#8634;</button>
 </div>
 
-<div id="wl-list" class="wl-list"></div>
+<!-- Places list is hidden for now; remove "hidden" to show it again. -->
+<div id="wl-list" class="wl-list" hidden></div>
 
 <script src="https://cdn.jsdelivr.net/npm/maplibre-gl@5.24.0/dist/maplibre-gl.js"></script>
 <script src="{{ site.baseurl }}/assets/lib/topojson-client.min.js"></script>
