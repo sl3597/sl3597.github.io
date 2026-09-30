@@ -16,7 +16,8 @@
       ["Grindelwald", 46.6242, 8.0414], ["Zermatt", 46.0207, 7.7491]] },
     { continent: "Europe", country: "Iceland", flag: "🇮🇸", id: "352", cities: [
       ["Reykjavík", 64.1466, -21.9426], ["Vík", 63.4186, -19.0060], ["Jökulsárlón", 64.0784, -16.2306],
-      ["Fjaðrárgljúfur", 63.7713, -18.1717], ["Þingvellir", 64.2559, -21.1299], ["Seljalandsfoss", 63.6156, -19.9886]] },
+      ["Fjaðrárgljúfur", 63.7713, -18.1717], ["Þingvellir", 64.2559, -21.1299], ["Seljalandsfoss", 63.6156, -19.9886],
+      ["Grundarfjörður", 64.9243, -23.2531], ["Hellissandur", 64.9143, -23.8740], ["Bláskógabyggð", 64.1690, -20.4900]] },
     { continent: "Europe", country: "Türkiye", flag: "🇹🇷", id: "792", cities: [["Istanbul", 41.0082, 28.9784]] },
     { continent: "North America", country: "United States", flag: "🇺🇸", id: "840", cities: [
       ["New York", 40.7128, -74.0060], ["Washington, D.C.", 38.9072, -77.0369], ["San Francisco", 37.7749, -122.4194],
