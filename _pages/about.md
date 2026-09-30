@@ -9,39 +9,39 @@ redirect_from:
 ---
 
 <p class="home-lead">
-I'm an incoming <strong>Applied Physical AI Researcher</strong> at <strong>Siemens</strong>, where I'll work on bringing multimodal foundation models and robot learning into real industrial systems. My background is in <strong>ML systems</strong> — quantization, GPU kernels, and on-device deployment — that make large models fast and reliable on real hardware.
+I'm an incoming <strong>Applied Physical AI Researcher</strong> at <strong>Siemens</strong>, where I'll work on bringing multimodal foundation models and robot learning into real industrial systems. My background is in <strong>ML systems</strong> — quantization, GPU kernels, and on-device deployment.
 </p>
 
 <p class="home-lead">
-I hold an M.Eng. in Electrical and Computer Engineering from <strong>Cornell Tech</strong> and a B.Eng. in Electronic and Electrical Engineering (First-Class Honours) from <strong>University College London</strong>.
+I hold an M.Eng. in Electrical and Computer Engineering from <strong>Cornell Tech</strong> and a B.Eng. in Electronic and Electrical Engineering from <strong>University College London</strong>.
 </p>
 
 ## Recent Updates
 
 <ul class="home-updates">
-  <li><span class="home-date">Oct 2026</span><span>Joining <strong>Siemens</strong> as an Applied Physical AI Researcher.</span></li>
-  <li><span class="home-date">Jul 2026</span><span>Joined <strong>DJI Automotive</strong> (Zhuoyu Technology) as a High-Performance Computing Engineer.</span></li>
-  <li><span class="home-date">May 2026</span><span>Graduated from <strong>Cornell Tech</strong> with an M.Eng. in ECE.</span></li>
-  <li><span class="home-date">Jun 2025</span><span>Graduated from <strong>UCL</strong> with a B.Eng. in EEE (First-Class Honours).</span></li>
+  <li><span class="home-date">Oct 2026</span> <span>Joining <strong>Siemens</strong> as an Applied Physical AI Researcher.</span></li>
+  <li><span class="home-date">Jul 2026</span> <span>Joined <strong>DJI Automotive</strong> (Zhuoyu Technology) as a High-Performance Computing Engineer.</span></li>
+  <li><span class="home-date">May 2026</span> <span>Graduated from <strong>Cornell Tech</strong> with an M.Eng. in ECE.</span></li>
+  <li><span class="home-date">Jun 2025</span> <span>Graduated from <strong>UCL</strong> with a B.Eng. in EEE.</span></li>
 </ul>
 
 ## Research Interests
 
 <div class="home-cards">
   <div class="home-card">
-    <div class="home-card__title"><i class="fas fa-robot" aria-hidden="true"></i>Industrial Physical AI</div>
+    <div class="home-card__title"><i class="fas fa-robot" aria-hidden="true"></i> Industrial Physical AI</div>
     <p>Applying VLMs, VLAs, and robot learning to industrial automation, and closing the gap between lab benchmarks and the factory floor.</p>
   </div>
   <div class="home-card">
-    <div class="home-card__title"><i class="fas fa-eye" aria-hidden="true"></i>Multimodal Foundation Models</div>
+    <div class="home-card__title"><i class="fas fa-eye" aria-hidden="true"></i> Multimodal Foundation Models</div>
     <p>Data preparation, fine-tuning, and evaluation of LLMs, VLMs, and diffusion models for perception-to-action pipelines.</p>
   </div>
   <div class="home-card">
-    <div class="home-card__title"><i class="fas fa-gauge-high" aria-hidden="true"></i>Efficient Inference &amp; Deployment</div>
+    <div class="home-card__title"><i class="fas fa-gauge-high" aria-hidden="true"></i> Efficient Inference &amp; Deployment</div>
     <p>Low-bit quantization, custom Triton kernels, and model compilation for real-time inference on edge and in-vehicle platforms.</p>
   </div>
   <div class="home-card">
-    <div class="home-card__title"><i class="fas fa-microchip" aria-hidden="true"></i>Hardware–Software Co-design</div>
+    <div class="home-card__title"><i class="fas fa-microchip" aria-hidden="true"></i> Hardware–Software Co-design</div>
     <p>Memory-centric systems (CXL, disaggregated memory) and RTL-to-GDSII design to understand efficiency across the full stack.</p>
   </div>
 </div>
@@ -67,7 +67,7 @@ I hold an M.Eng. in Electrical and Computer Engineering from <strong>Cornell Tec
     <div class="home-tl-head"><strong>Research Assistant</strong> · Computer Systems Lab, Cornell University</div>
     <div class="home-tl-sub">Dec 2025 – May 2026 · Advisor: <a href="https://www.mohsaied.com/">Prof. Mohamed Abdelfattah</a></div>
     <ul>
-      <li>Low-bit quantization (FP8 → W2A2) for LLMs, VLMs, and diffusion models, and KV-cache quantization for long-context inference.</li>
+      <li>Low-bit quantization for LLMs, VLMs, and diffusion models, and KV-cache quantization for long-context inference.</li>
     </ul>
   </div>
 
