@@ -261,7 +261,7 @@
   var filters = document.getElementById("wl-filters");
   var list = document.getElementById("wl-list");
   var buttons = {};
-  var cards = [];
+  var groups = [];
 
   function setFilter(name) {
     stopSpin();
@@ -269,7 +269,7 @@
       buttons[k].classList.toggle("is-active", k === name);
       buttons[k].setAttribute("aria-selected", k === name ? "true" : "false");
     });
-    cards.forEach(function (c) { c.el.hidden = !(name === "All" || c.place.continent === name); });
+    groups.forEach(function (c) { c.el.hidden = !(name === "All" || c.place.continent === name); });
     if (name === "All") {
       flyHome();
     } else {
@@ -295,40 +295,49 @@
   }
 
   if (list) {
-    PLACES.forEach(function (p) {
-      var card = document.createElement("div");
-      card.className = "wl-card";
+    continents.forEach(function (cont) {
+      var section = document.createElement("section");
+      section.className = "wl-group";
+      var h = document.createElement("h3");
+      h.className = "wl-group__title";
+      h.textContent = cont;
+      section.appendChild(h);
 
-      var head = document.createElement("button");
-      head.type = "button";
-      head.className = "wl-card__head";
-      head.innerHTML = "<span class=\"wl-card__flag\">" + p.flag + "</span>" +
-        "<span class=\"wl-card__name\">" + p.country + "</span>" +
-        "<span class=\"wl-card__count\">" + p.cities.length + "</span>";
-      head.addEventListener("click", function () {
-        el.scrollIntoView({ behavior: "smooth", block: "center" });
-        flyToCountry(p);
-      });
+      PLACES.filter(function (p) { return p.continent === cont; }).forEach(function (p) {
+        var row = document.createElement("div");
+        row.className = "wl-row";
 
-      var chips = document.createElement("div");
-      chips.className = "wl-chips";
-      p.cities.forEach(function (c) {
-        var chip = document.createElement("button");
-        chip.type = "button";
-        chip.className = "wl-chip";
-        chip.textContent = c[0];
-        chip.addEventListener("click", function () {
-          stopSpin();
+        var name = document.createElement("button");
+        name.type = "button";
+        name.className = "wl-row__country";
+        name.innerHTML = "<span class=\"wl-row__flag\">" + p.flag + "</span>" + p.country;
+        name.addEventListener("click", function () {
           el.scrollIntoView({ behavior: "smooth", block: "center" });
-          map.flyTo({ center: [c[2], c[1]], zoom: 9, duration: 1800 });
+          flyToCountry(p);
         });
-        chips.appendChild(chip);
+
+        var cities = document.createElement("div");
+        cities.className = "wl-row__cities";
+        p.cities.forEach(function (c) {
+          var link = document.createElement("button");
+          link.type = "button";
+          link.className = "wl-city";
+          link.textContent = c[0];
+          link.addEventListener("click", function () {
+            stopSpin();
+            el.scrollIntoView({ behavior: "smooth", block: "center" });
+            map.flyTo({ center: [c[2], c[1]], zoom: 9, duration: 1800 });
+          });
+          cities.appendChild(link);
+        });
+
+        row.appendChild(name);
+        row.appendChild(cities);
+        section.appendChild(row);
       });
 
-      card.appendChild(head);
-      card.appendChild(chips);
-      list.appendChild(card);
-      cards.push({ el: card, place: p });
+      list.appendChild(section);
+      groups.push({ el: section, place: { continent: cont } });
     });
   }
 

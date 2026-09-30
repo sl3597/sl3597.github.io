@@ -6,13 +6,13 @@ permalink: /wanderlust/
 redirect_from:
   - /travel/
 author_profile: true
-excerpt: "Seeing the world, one city at a time — places Shengwei Liu has visited."
+excerpt: "The more I see, the more I learn — places Shengwei Liu has visited."
 ---
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@5.24.0/dist/maplibre-gl.css">
 
 <div class="wl-hero">
-  <div class="wl-hero__title">Seeing the world, one city at a time.</div>
+  <div class="wl-hero__title">The more I see, the more I learn.</div>
   <div id="wl-stats" class="wl-stats"></div>
 </div>
 
@@ -26,7 +26,6 @@ excerpt: "Seeing the world, one city at a time — places Shengwei Liu has visit
   </div>
   <button id="wl-reset" class="wl-reset" type="button" title="Back to globe" aria-label="Back to globe">&#8634;</button>
 </div>
-<div class="wl-hint">Drag to spin the globe · click the map to zoom with your scroll wheel · tap a country or city to fly there</div>
 
 <div id="wl-list" class="wl-list"></div>
 
