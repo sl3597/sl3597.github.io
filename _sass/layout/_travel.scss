@@ -1,72 +1,259 @@
 /* ==========================================================================
-   TRAVEL PAGE
+   WANDERLUST (TRAVEL) PAGE
    ========================================================================== */
 
-.travel-stats {
-  display: flex;
-  gap: 1.5em;
-  margin-bottom: 0.8em;
-  font-size: 0.9em;
+:root {
+  --travel-ocean-top: #eef6f8;
+  --travel-ocean-bottom: #dcebef;
+  --travel-land: #d9dfe3;
+  --travel-border: #ffffff;
+  --travel-card-bg: rgba(47, 127, 147, 0.06);
+}
 
-  strong {
-    font-size: 1.4em;
-    color: var(--global-base-color);
-  }
+html[data-theme="dark"] {
+  --travel-ocean-top: #2f3a40;
+  --travel-ocean-bottom: #263036;
+  --travel-land: #5a6368;
+  --travel-border: #3b4449;
+  --travel-card-bg: rgba(14, 161, 197, 0.1);
+}
+
+.travel-tagline {
+  margin-top: -0.5em;
+  font-size: 1.1em;
+  font-style: italic;
+  color: var(--global-text-color-light);
+}
+
+/* Stats */
+
+.travel-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8em;
+  margin-bottom: 1.2em;
+}
+
+.travel-stat {
+  padding: 0.8em 0.5em;
+  border-radius: 10px;
+  text-align: center;
+  background: var(--travel-card-bg);
+}
+
+.travel-stat__num {
+  display: block;
+  font-size: 2em;
+  font-weight: bold;
+  line-height: 1.1;
+  color: var(--global-base-color);
+}
+
+.travel-stat__label {
+  font-size: 0.72em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--global-text-color-light);
+}
+
+/* Map */
+
+.travel-map-wrap {
+  position: relative;
 }
 
 .travel-map {
-  height: 460px;
-  margin-bottom: 1.5em;
-  border: 1px solid var(--global-border-color);
-  border-radius: 8px;
+  height: 480px;
+  border-radius: 12px;
   overflow: hidden;
   z-index: 0;
+  background: linear-gradient(180deg, var(--travel-ocean-top), var(--travel-ocean-bottom));
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+
+  &.leaflet-container {
+    font-family: inherit;
+    background: linear-gradient(180deg, var(--travel-ocean-top), var(--travel-ocean-bottom));
+  }
 
   @media (max-width: 600px) {
-    height: 320px;
+    height: 340px;
   }
 }
 
-.travel-list {
-  margin-bottom: 1.5em;
-}
-
-.travel-row {
+.travel-legend {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 1;
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.4em 1em;
-  padding: 0.6em 0;
-  border-bottom: 1px solid var(--global-border-color);
+  gap: 0.9em;
+  padding: 0.3em 0.7em;
+  border-radius: 6px;
+  font-size: 0.7em;
+  color: var(--global-text-color);
+  background: var(--global-bg-color);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
 
-  &:last-child {
-    border-bottom: 0;
+  span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
   }
 }
 
-.travel-region {
-  flex: 0 0 9em;
-  font-size: 0.85em;
+.travel-legend__swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  background: var(--global-base-color);
+  opacity: 0.6;
+}
+
+.travel-legend__dot {
+  width: 9px;
+  height: 9px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: #e8603c;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
+}
+
+.travel-hint {
+  margin: 0.5em 0 1.5em;
+  font-size: 0.72em;
+  text-align: center;
+  color: var(--global-text-color-light);
+}
+
+.travel-reset {
+  font-size: 16px;
   font-weight: bold;
+}
+
+/* City pins with a soft pulse */
+
+.travel-pin {
+  span {
+    position: relative;
+    display: block;
+    width: 12px;
+    height: 12px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background: #e8603c;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+    box-sizing: border-box;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: -5px;
+      border-radius: 50%;
+      background: rgba(232, 96, 60, 0.35);
+      animation: travel-pulse 2.4s ease-out infinite;
+    }
+  }
+}
+
+@keyframes travel-pulse {
+  0% { transform: scale(0.4); opacity: 1; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .travel-pin span::after {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+.travel-tip {
+  padding: 0.4em 0.7em;
+  border: 0;
+  border-radius: 6px;
+  font-size: 12px;
+  line-height: 1.45;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+
+  span {
+    color: #666;
+  }
+}
+
+.travel-map--error::after {
+  content: "Map data failed to load.";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.8em;
+  color: var(--global-text-color-light);
+}
+
+/* Places by continent */
+
+.travel-continent {
+  margin: 1.2em 0 0.6em;
+  font-size: 0.8em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--global-text-color-light);
+}
+
+.travel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.8em;
+}
+
+.travel-card {
+  padding: 0.8em 0.9em;
+  border: 1px solid var(--global-border-color);
+  border-radius: 10px;
+  background: var(--travel-card-bg);
+}
+
+.travel-card__title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5em;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.travel-card__flag {
+  margin-right: 0.4em;
+  font-size: 1.3em;
+}
+
+.travel-card__count {
+  margin-left: auto;
+  padding: 0 0.55em;
+  border-radius: 999px;
+  font-size: 0.75em;
+  color: #fff;
+  background: var(--global-base-color);
 }
 
 .travel-chips {
   display: flex;
-  flex: 1;
   flex-wrap: wrap;
-  gap: 0.4em;
+  gap: 0.35em;
 }
 
 .travel-chip {
-  padding: 0.15em 0.7em;
-  border: 1px solid var(--global-base-color);
+  padding: 0.15em 0.65em;
+  border: 1px solid var(--global-border-color);
   border-radius: 999px;
-  font-size: 0.75em;
-  color: var(--global-base-color);
-  background: rgba(47, 127, 147, 0.07);
+  font-family: inherit;
+  font-size: 0.72em;
+  color: var(--global-text-color);
+  background: var(--global-bg-color);
   cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease;
+  transition: all 0.15s ease;
 
   &:hover {
+    border-color: var(--global-base-color);
     color: #fff;
     background: var(--global-base-color);
   }
