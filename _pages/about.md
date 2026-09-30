@@ -20,8 +20,9 @@ I hold an M.Eng. in Electrical and Computer Engineering from <strong>Cornell Tec
 
 <ul class="home-updates">
   <li><span class="home-date">Oct 2026</span><span>Joining <strong>Siemens</strong> as an Applied Physical AI Researcher.</span></li>
+  <li><span class="home-date">Jul 2026</span><span>Joined <strong>DJI Automotive</strong> (Zhuoyu Technology) as a High-Performance Computing Engineer.</span></li>
   <li><span class="home-date">May 2026</span><span>Graduated from <strong>Cornell Tech</strong> with an M.Eng. in ECE.</span></li>
-  <li><span class="home-date">Nov 2025</span><span><em>SHMemora</em> accepted to <strong>IEEE ICDE 2026</strong>.</span></li>
+  <li><span class="home-date">Jun 2025</span><span>Graduated from <strong>UCL</strong> with a B.Eng. in EEE (First-Class Honours).</span></li>
 </ul>
 
 ## Research Interests
@@ -49,19 +50,13 @@ I hold an M.Eng. in Electrical and Computer Engineering from <strong>Cornell Tec
 
 <div class="home-timeline">
   <div class="home-tl-item">
-    <div class="home-tl-head">
-      <div><strong>Applied Physical AI Researcher</strong> · Siemens</div>
-      <span class="home-tl-date">Oct 2026 –</span>
-    </div>
-    <div class="home-tl-sub">Autonomous Factory, Digital Industries · Suzhou</div>
+    <div class="home-tl-head"><strong>Applied Physical AI Researcher</strong> · Siemens</div>
+    <div class="home-tl-sub">Oct 2026 – Present · Autonomous Factory, Digital Industries · Suzhou</div>
   </div>
 
   <div class="home-tl-item">
-    <div class="home-tl-head">
-      <div><strong>High-Performance Computing Engineer</strong> · Zhuoyu Technology (DJI Automotive)</div>
-      <span class="home-tl-date">Jul – Sep 2026</span>
-    </div>
-    <div class="home-tl-sub">Shenzhen</div>
+    <div class="home-tl-head"><strong>High-Performance Computing Engineer</strong> · DJI Automotive (Zhuoyu Technology)</div>
+    <div class="home-tl-sub">Jul – Sep 2026 · Shenzhen</div>
     <ul>
       <li>Built pipeline components for vision foundation model export, compilation, evaluation, and on-device deployment, launched on the company's training &amp; deployment platform.</li>
       <li>Cut end-to-end pipeline time by ~27 minutes per run through task-parallel refactoring and faster resource download.</li>
@@ -69,22 +64,16 @@ I hold an M.Eng. in Electrical and Computer Engineering from <strong>Cornell Tec
   </div>
 
   <div class="home-tl-item">
-    <div class="home-tl-head">
-      <div><strong>Research Assistant</strong> · Computer Systems Lab, Cornell University</div>
-      <span class="home-tl-date">Dec 2025 – May 2026</span>
-    </div>
-    <div class="home-tl-sub">Advisor: <a href="https://www.mohsaied.com/">Prof. Mohamed Abdelfattah</a></div>
+    <div class="home-tl-head"><strong>Research Assistant</strong> · Computer Systems Lab, Cornell University</div>
+    <div class="home-tl-sub">Dec 2025 – May 2026 · Advisor: <a href="https://www.mohsaied.com/">Prof. Mohamed Abdelfattah</a></div>
     <ul>
       <li>Low-bit quantization (FP8 → W2A2) for LLMs, VLMs, and diffusion models, and KV-cache quantization for long-context inference.</li>
     </ul>
   </div>
 
   <div class="home-tl-item">
-    <div class="home-tl-head">
-      <div><strong>Research Assistant</strong> · HAS Lab, Tsinghua University</div>
-      <span class="home-tl-date">May – Sep 2025</span>
-    </div>
-    <div class="home-tl-sub">Advisor: <a href="https://www.thu-haslab.org/author/shuwen-deng/">Prof. Shuwen Deng</a></div>
+    <div class="home-tl-head"><strong>Research Assistant</strong> · HAS Lab, Tsinghua University</div>
+    <div class="home-tl-sub">May – Sep 2025 · Advisor: <a href="https://www.thu-haslab.org/author/shuwen-deng/">Prof. Shuwen Deng</a></div>
     <ul>
       <li>CXL-based memory systems and distributed key–value stores; benchmarking against Redis clusters.</li>
     </ul>

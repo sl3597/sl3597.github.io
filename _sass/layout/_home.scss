@@ -23,7 +23,7 @@
 }
 
 .home-date {
-  flex: 0 0 5.2em;
+  flex: 0 0 6.5em;
   font-size: 0.8em;
   font-weight: bold;
   color: var(--global-base-color);
@@ -102,20 +102,13 @@
 }
 
 .home-tl-head {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 0 1em;
+  line-height: 1.4;
 }
 
-.home-tl-date,
 .home-tl-sub {
+  margin-top: 0.15em;
   font-size: 0.8em;
   color: var(--global-text-color-light);
-}
-
-.home-tl-date {
-  white-space: nowrap;
 }
 
 /* Publications */
@@ -140,6 +133,11 @@
 
 .home-pub__title {
   font-weight: bold;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .home-pub__authors,
