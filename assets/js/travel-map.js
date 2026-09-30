@@ -11,12 +11,18 @@
     { continent: "Europe", country: "Monaco", flag: "🇲🇨", id: "492", cities: [["Monaco", 43.7384, 7.4246]] },
     { continent: "Europe", country: "Germany", flag: "🇩🇪", id: "276", cities: [["Munich", 48.1351, 11.5820], ["Stuttgart", 48.7758, 9.1829]] },
     { continent: "Europe", country: "Switzerland", flag: "🇨🇭", id: "756", cities: [
-      ["Zurich", 47.3769, 8.5417], ["Geneva", 46.2044, 6.1432], ["Lucerne", 47.0502, 8.3093], ["Bern", 46.9480, 7.4474]] },
-    { continent: "Europe", country: "Iceland", flag: "🇮🇸", id: "352", cities: [["Reykjavík", 64.1466, -21.9426]] },
+      ["Zurich", 47.3769, 8.5417], ["Geneva", 46.2044, 6.1432], ["Lucerne", 47.0502, 8.3093], ["Bern", 46.9480, 7.4474],
+      ["Thun", 46.7580, 7.6280], ["Spiez", 46.6860, 7.6800], ["Interlaken", 46.6863, 7.8632],
+      ["Grindelwald", 46.6242, 8.0414], ["Zermatt", 46.0207, 7.7491]] },
+    { continent: "Europe", country: "Iceland", flag: "🇮🇸", id: "352", cities: [
+      ["Reykjavík", 64.1466, -21.9426], ["Vík", 63.4186, -19.0060], ["Jökulsárlón", 64.0784, -16.2306],
+      ["Fjaðrárgljúfur", 63.7713, -18.1717], ["Þingvellir", 64.2559, -21.1299], ["Seljalandsfoss", 63.6156, -19.9886]] },
     { continent: "Europe", country: "Türkiye", flag: "🇹🇷", id: "792", cities: [["Istanbul", 41.0082, 28.9784]] },
     { continent: "North America", country: "United States", flag: "🇺🇸", id: "840", cities: [
       ["New York", 40.7128, -74.0060], ["Washington, D.C.", 38.9072, -77.0369], ["San Francisco", 37.7749, -122.4194],
       ["Los Angeles", 34.0522, -118.2437], ["Las Vegas", 36.1699, -115.1398], ["Miami", 25.7617, -80.1918]] },
+    { continent: "North America", country: "Bahamas", flag: "🇧🇸", id: "044", cities: [["The Beach Club at Bimini", 25.7280, -79.2966]] },
+    { continent: "North America", country: "Turks and Caicos", flag: "🇹🇨", id: "796", cities: [["Grand Turk", 21.4675, -71.1389]] },
     { continent: "Asia", country: "China", flag: "🇨🇳", id: "156", cities: [
       ["Beijing", 39.9042, 116.4074], ["Shanghai", 31.2304, 121.4737], ["Guangzhou", 23.1291, 113.2644],
       ["Shenzhen", 22.5431, 114.0579], ["Chongqing", 29.5630, 106.5516], ["Suzhou", 31.2990, 120.5853],
