@@ -1,7 +1,7 @@
 ---
 permalink: /
 title: "About Me"
-excerpt: "Shengwei Liu — incoming Applied Physical AI Researcher at Siemens; M.Eng. ECE, Cornell Tech; B.Eng. EEE, UCL. Working on Physical AI, multimodal foundation models, and efficient model inference and deployment."
+excerpt: "Shengwei Liu — Applied Physical AI Researcher at Siemens; M.Eng. ECE, Cornell Tech; B.Eng. EEE, UCL. Working on Physical AI, multimodal foundation models, and efficient model inference and deployment."
 author_profile: true
 redirect_from:
   - /about/
@@ -9,7 +9,7 @@ redirect_from:
 ---
 
 <p class="home-lead">
-I work at the intersection of <strong>Physical AI</strong> and <strong>ML systems</strong> — bringing multimodal foundation models and robot learning into real industrial systems, and making large models fast and efficient on real hardware.
+I am working at the intersection of <strong>Physical AI</strong> and <strong>ML systems</strong> — bringing multimodal foundation models and robot learning into real industrial systems, and making large models fast and efficient on real hardware.
 </p>
 
 ## Research Interests
@@ -38,11 +38,11 @@ I work at the intersection of <strong>Physical AI</strong> and <strong>ML system
 <div class="home-timeline">
   <div class="home-tl-item">
     <div class="home-tl-head"><strong>Applied Physical AI Researcher</strong> · Siemens</div>
-    <div class="home-tl-sub">Oct 2026 – Present · Autonomous Factory, Digital Industries · Suzhou</div>
+    <div class="home-tl-sub">Oct 2026 – Present · Suzhou</div>
   </div>
 
   <div class="home-tl-item">
-    <div class="home-tl-head"><strong>High-Performance Computing Engineer</strong> · DJI Automotive (Zhuoyu Technology)</div>
+    <div class="home-tl-head"><strong>High-Performance Computing Engineer</strong> · Zhuoyu Technology (DJI Automotive)</div>
     <div class="home-tl-sub">Jul – Sep 2026 · Shenzhen</div>
     <ul>
       <li>Built pipeline components for vision foundation model export, compilation, evaluation, and on-device deployment, launched on the company's training &amp; deployment platform.</li>
