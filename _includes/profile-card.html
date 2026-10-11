@@ -1,0 +1,35 @@
+{% include base_path %}
+{% assign author = site.author %}
+{% assign headline = author.bio_items | first %}
+
+<section class="profile-card" itemscope itemtype="http://schema.org/Person">
+  <img class="profile-card__cover" src="{{ base_path }}/images/{{ include.cover }}" alt="" aria-hidden="true">
+
+  <div class="profile-card__body">
+    <img class="profile-card__avatar" src="{{ author.avatar | prepend: '/images/' | prepend: base_path }}" alt="{{ author.name }}" itemprop="image" fetchpriority="high">
+
+    <h1 class="profile-card__name" itemprop="name">{{ author.name }}</h1>
+    <p class="profile-card__headline" itemprop="jobTitle">{{ headline.title }} at {{ headline.org }}</p>
+    <p class="profile-card__edu">
+      {% for item in author.bio_items offset: 1 %}{{ item.title }}, {{ item.org }}{% unless forloop.last %} · {% endunless %}{% endfor %}
+    </p>
+    {% if author.location %}
+      <p class="profile-card__meta"><i class="fas fa-location-dot" aria-hidden="true"></i> {{ author.location }}</p>
+    {% endif %}
+
+    <div class="profile-card__actions">
+      {% if author.email %}
+        <a class="profile-card__btn profile-card__btn--primary" href="mailto:{{ author.email }}"><i class="fas fa-envelope" aria-hidden="true"></i> Email</a>
+      {% endif %}
+      {% if author.linkedin %}
+        <a class="profile-card__btn" href="https://www.linkedin.com/in/{{ author.linkedin }}" target="_blank" rel="noopener"><i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn</a>
+      {% endif %}
+      {% if author.github %}
+        <a class="profile-card__btn" href="https://github.com/{{ author.github }}" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
+      {% endif %}
+      {% if author.googlescholar %}
+        <a class="profile-card__btn" href="{{ author.googlescholar }}" target="_blank" rel="noopener"><i class="ai ai-google-scholar" aria-hidden="true"></i> Scholar</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
