@@ -79,9 +79,32 @@
   });
   map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "bottom-left");
 
-  /* Scroll-zoom only after the map is clicked, so the page still scrolls normally. */
-  map.on("click", function () { map.scrollZoom.enable(); });
-  el.addEventListener("mouseleave", function () { map.scrollZoom.disable(); });
+  /* Scroll-zoom only after the map is clicked, so the page still scrolls normally.
+     Trackpad pinch (a ctrlKey wheel event) always zooms the map instead of the page. */
+  var clickZoom = false;
+  var gesturing = false;
+  map.on("click", function () { clickZoom = true; map.scrollZoom.enable(); });
+  el.addEventListener("mouseleave", function () { clickZoom = false; map.scrollZoom.disable(); });
+  el.parentNode.addEventListener("wheel", function (e) {
+    if (!el.contains(e.target)) return;
+    if (gesturing) { e.preventDefault(); e.stopPropagation(); return; }
+    if (e.ctrlKey) map.scrollZoom.enable();
+    else if (!clickZoom) map.scrollZoom.disable();
+  }, { capture: true, passive: false });
+
+  /* Safari reports trackpad pinch as gesture events rather than ctrlKey wheels. */
+  var gestureZoom = 0;
+  el.addEventListener("gesturestart", function (e) {
+    e.preventDefault();
+    gesturing = true;
+    stopSpin();
+    gestureZoom = map.getZoom();
+  });
+  el.addEventListener("gesturechange", function (e) {
+    e.preventDefault();
+    map.jumpTo({ zoom: gestureZoom + Math.log2(e.scale) });
+  });
+  el.addEventListener("gestureend", function (e) { e.preventDefault(); gesturing = false; });
 
   /* ---------- Gentle auto-rotation until the visitor interacts ---------- */
 
