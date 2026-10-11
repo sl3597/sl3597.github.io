@@ -2,6 +2,15 @@
    HOME (About Me) PAGE COMPONENTS
    ========================================================================== */
 
+.home-banner {
+  display: block;
+  width: 100%;
+  aspect-ratio: 20 / 7;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 0 0 1.25em;
+}
+
 .home-lead {
   font-size: 1.05em;
   line-height: 1.7;

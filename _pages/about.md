@@ -8,6 +8,8 @@ redirect_from:
   - /about.html
 ---
 
+<img class="home-banner" src="/images/siemens-banner.jpg" alt="Siemens IndyCar on track">
+
 <p class="home-lead">
 I am working at the intersection of <strong>Physical AI</strong> and <strong>ML systems</strong> — bringing multimodal foundation models and robot learning into real industrial systems, and making large models fast and efficient on real hardware.
 </p>

@@ -23,7 +23,7 @@ repository               : "sl3597/sl3597.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "profile.jpg"
   name             : "Shengwei Liu"
   pronouns         : # example: "he/him"  
   bio: "Applied Physical AI Researcher at Siemens | M.Eng ECE at Cornell Tech | B.Eng EEE at UCL"
@@ -153,7 +153,7 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 : "profile.png" # Social media default site image
+og_image                 : "profile.jpg" # Social media default site image
 og_description           : "Shengwei Liu — Applied Physical AI Researcher at Siemens. Physical AI, multimodal foundation models, and efficient model inference and deployment."  # Social media default site image description
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
