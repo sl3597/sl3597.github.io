@@ -161,42 +161,9 @@
 }
 
 .page__hero-image {
-  display: block;
   width: 100%;
   height: auto;
-  max-height: 280px;
-  object-fit: cover;
   -ms-interpolation-mode: bicubic;
-}
-
-/* Fade the bottom of an image hero into the page background */
-.page__hero::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 35%;
-  background: linear-gradient(to bottom, transparent, var(--global-bg-color));
-  pointer-events: none;
-}
-
-/* With an image hero, the sidebar scrolls with the page and the avatar overlaps the hero's bottom edge */
-@media screen and (min-width: $sidebar-screen-min-width) {
-  #main.has-hero .sidebar {
-    position: relative;
-    z-index: 2;
-    height: auto;
-    overflow: visible;
-    padding-top: 0;
-    margin-top: calc(-2rem - 95px);
-  }
-
-  #main.has-hero .author__avatar img {
-    background-color: var(--global-bg-color);
-    border-color: var(--global-bg-color);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
-  }
 }
 
 .page__hero-caption {

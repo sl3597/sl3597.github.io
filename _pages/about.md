@@ -3,12 +3,15 @@ permalink: /
 title: "About Me"
 excerpt: "Shengwei Liu — Applied Physical AI Researcher at Siemens; M.Eng. ECE, Cornell Tech; B.Eng. EEE, UCL. Working on Physical AI, multimodal foundation models, and efficient model inference and deployment."
 author_profile: true
-header:
-  image: "siemens-banner.jpg"
+hide_title: true
 redirect_from:
   - /about/
   - /about.html
 ---
+
+<img class="home-banner" src="/images/siemens-banner.jpg" alt="Siemens IndyCar on track">
+
+<h1 class="page__title">About Me</h1>
 
 <p class="home-lead">
 I am working at the intersection of <strong>Physical AI</strong> and <strong>ML systems</strong> — bringing multimodal foundation models and robot learning into real industrial systems, and making large models fast and efficient on real hardware.
