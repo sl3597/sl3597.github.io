@@ -40,6 +40,12 @@
     padding-right: 0;
   }
 
+  // The greedy-nav script pads the sidebar for the fixed masthead whenever the
+  // "Follow" button is hidden; on narrow screens we hide that button ourselves.
+  @media screen and (max-width: $large - 1px) {
+    padding-top: 0 !important;
+  }
+
   h2, h3, h4, h5, h6 {
     margin-bottom: 0;
     font-family: $sans-serif-narrow;
@@ -231,8 +237,18 @@
     display: flex;
     gap: 0.5em;
     align-items: flex-start;
-    margin-bottom: 0.55em;
+    margin-bottom: 0.85em;
     line-height: 1.35;
+  }
+
+  // Same-icon follow-ups (e.g. a second degree) sit tight under the item above,
+  // so each icon reads as one group.
+  li.author__bio-item--cont {
+    margin-top: -0.45em;
+  }
+
+  li:last-child {
+    margin-bottom: 0;
   }
 
   i {
@@ -257,7 +273,8 @@
 
 .author__bio-org {
   color: var(--global-text-color);
-  opacity: 0.75;
+  font-size: 0.92em;
+  opacity: 0.7;
 }
 
 .author__bio-tag {
@@ -290,14 +307,21 @@
 
   @include breakpoint($large) {
     display: block;
+    // Separate "who I am" from "where / how to reach me"
+    padding-top: 1em;
+    border-top: 1px solid var(--global-border-color);
+  }
+
+  // On narrow screens show contact links directly instead of behind "Follow"
+  @media screen and (max-width: $large - 1px) {
+    display: block;
+    margin-top: 0.9em;
+    cursor: auto;
   }
 
   button {
     margin-bottom: 0;
-
-    @include breakpoint($large) {
-      display: none;
-    }
+    display: none;
   }
 }
 
@@ -375,6 +399,38 @@
 
     &:hover {
       text-decoration: underline;
+    }
+  }
+
+  // Narrow screens: a row of pill links under the profile
+  @media screen and (max-width: $large - 1px) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    position: static;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    z-index: auto;
+
+    &:before,
+    &:after {
+      display: none;
+    }
+
+    a {
+      margin-bottom: 0;
+      padding: 0.35em 0.85em;
+      border: 1px solid var(--global-border-color);
+      border-radius: 999px;
+      font-size: $type-size-6;
+
+      &:hover {
+        text-decoration: none;
+        border-color: var(--global-base-color);
+      }
     }
   }
 }

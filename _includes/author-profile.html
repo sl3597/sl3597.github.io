@@ -21,7 +21,7 @@
       <ul class="author__bio-list">
         {% assign prev_icon = "" %}
         {% for item in author.bio_items %}
-          <li>
+          <li{% if item.icon == prev_icon %} class="author__bio-item--cont"{% endif %}>
             {% if item.icon == prev_icon %}<i class="fas fa-fw author__bio-icon--blank" aria-hidden="true"></i>{% else %}<i class="fas fa-fw fa-{{ item.icon }}" aria-hidden="true"></i>{% endif %}
             {% assign prev_icon = item.icon %}
             <span class="author__bio-text">

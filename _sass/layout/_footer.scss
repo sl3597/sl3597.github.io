@@ -94,3 +94,34 @@
     }
   }
 }
+
+.page__footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  padding: 0.25em 0;
+}
+
+.page__footer-links {
+  display: flex;
+  gap: 0.25em;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  a {
+    display: inline-block;
+    padding: 0.2em;
+    font-size: $type-size-6;
+
+    &:hover {
+      text-decoration: none;
+
+      .fas,
+      .fab {
+        color: var(--global-base-color);
+      }
+    }
+  }
+}

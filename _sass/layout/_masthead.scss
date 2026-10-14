@@ -79,3 +79,10 @@
   border-bottom: 2px solid var(--global-text-color);
   /* No need to repeat pointer-events and cursor here */
 }
+
+.masthead__ext-icon {
+  margin-left: 0.3em;
+  font-size: 0.6em;
+  vertical-align: 0.35em;
+  opacity: 0.55;
+}

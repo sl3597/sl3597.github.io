@@ -61,7 +61,13 @@
     return "https://tiles.openfreemap.org/styles/" + (isDark() ? "dark" : "positron");
   }
 
-  var HOME = { center: [60, 28], zoom: 2.05 };
+  /* Home zoom is tuned for the ~770x520 desktop card; scale it down for narrower
+     containers (phones) so the whole globe still fits on first load. */
+  function homeZoom() {
+    var fit = Math.min(el.clientWidth / 770, el.clientHeight / 520, 1);
+    return Math.max(0.8, 2.05 + Math.log2(fit));
+  }
+  var HOME = { center: [60, 28], zoom: homeZoom() };
 
   var map = new maplibregl.Map({
     container: el,
@@ -278,7 +284,7 @@
     }
   }
   function flyHome() {
-    map.flyTo({ center: HOME.center, zoom: HOME.zoom, duration: 1600 });
+    map.flyTo({ center: HOME.center, zoom: homeZoom(), duration: 1600 });
   }
 
   /* ---------- Stats ---------- */

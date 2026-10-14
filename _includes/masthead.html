@@ -15,7 +15,11 @@
               {% assign domain = base_path %}
             {% endif %}
             <li class="masthead__menu-item {% if page.url contains link.url and link.url != '/' %}selected{% endif %}">
-              <a href="{{ domain }}{{ link.url }}">{{ link.title }}</a>
+              {% if link.url contains '.pdf' %}
+                <a href="{{ domain }}{{ link.url }}" target="_blank" rel="noopener" title="{{ link.title }} (PDF, opens in new tab)">{{ link.title }}<i class="fas fa-arrow-up-right-from-square masthead__ext-icon" aria-hidden="true"></i></a>
+              {% else %}
+                <a href="{{ domain }}{{ link.url }}">{{ link.title }}</a>
+              {% endif %}
             </li>
           {% endfor %}
           <li id="theme-toggle" class="masthead__menu-item persist tail">

@@ -1,1 +1,7 @@
-<!-- footer intentionally removed -->
+<div class="page__footer-row">
+  <div class="page__footer-copyright">&copy; {{ site.time | date: '%Y' }} {{ site.author.name }}</div>
+  <ul class="page__footer-links">
+    {% if site.author.email %}<li><a href="mailto:{{ site.author.email }}" aria-label="Email"><i class="fas fa-fw fa-envelope" aria-hidden="true"></i></a></li>{% endif %}
+    {% if site.author.linkedin %}<li><a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" aria-label="LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i></a></li>{% endif %}
+  </ul>
+</div>
