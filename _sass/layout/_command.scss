@@ -1,0 +1,339 @@
+/* ==========================================================================
+   COMMAND PALETTE (⌘K) AND KEYBOARD HINTS
+   ========================================================================== */
+
+$ui-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+
+:root {
+  --cmdk-overlay: rgba(15, 23, 32, 0.42);
+  --cmdk-panel: #fff;
+  --cmdk-border: var(--global-border-color);
+  --cmdk-muted: #7a8288;
+  --cmdk-active: rgba(47, 127, 147, 0.1);
+  --cmdk-kbd-bg: #f3f5f7;
+  --cmdk-kbd-fg: #4a5055;
+  --cmdk-kbd-border: #d5dadf;
+}
+
+html[data-theme="dark"] {
+  --cmdk-overlay: rgba(0, 0, 0, 0.6);
+  --cmdk-panel: #353a3f;
+  --cmdk-border: #4f555b;
+  --cmdk-muted: #b4bbc1;
+  --cmdk-active: rgba(14, 161, 197, 0.2);
+  --cmdk-kbd-bg: #272b2f;
+  --cmdk-kbd-fg: #dde1e5;
+  --cmdk-kbd-border: #555b61;
+}
+
+/* Shared key-cap look */
+
+.cmdk kbd,
+.cmdk-trigger kbd {
+  display: inline-block;
+  min-width: 1.5em;
+  padding: 0.05em 0.42em;
+  border: 1px solid var(--cmdk-kbd-border);
+  border-bottom-width: 2px;
+  border-radius: 5px;
+  font-family: $ui-mono;
+  font-size: 0.72em;
+  font-weight: 600;
+  line-height: 1.55;
+  text-align: center;
+  color: var(--cmdk-kbd-fg);
+  background: var(--cmdk-kbd-bg);
+  box-shadow: none;
+}
+
+/* Masthead trigger */
+
+.greedy-nav .visible-links .cmdk-trigger a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  cursor: pointer;
+
+  kbd {
+    font-size: 0.62em;
+    min-width: 1.4em;
+    padding: 0 0.35em;
+  }
+
+  i {
+    font-size: 0.9em;
+  }
+
+  @media (max-width: 600px) {
+    kbd { display: none; }
+  }
+}
+
+/* Palette */
+
+.cmdk {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 12vh 16px 16px;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+body.cmdk-open {
+  overflow: hidden;
+}
+
+.cmdk__backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--cmdk-overlay);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+  animation: cmdk-fade 0.15s ease both;
+}
+
+.cmdk__panel {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  border: 1px solid var(--cmdk-border);
+  border-radius: 14px;
+  font-family: $sans-serif;
+  color: var(--global-text-color);
+  background: var(--cmdk-panel);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.28), 0 2px 6px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  animation: cmdk-pop 0.18s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.cmdk__head {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.65em 0.9em;
+  border-bottom: 1px solid var(--cmdk-border);
+}
+
+.cmdk__prompt {
+  font-family: $ui-mono;
+  font-size: 1.35em;
+  line-height: 1;
+  font-weight: 700;
+  color: var(--global-base-color);
+}
+
+.cmdk__mode {
+  flex: none;
+  padding: 0.15em 0.6em;
+  border-radius: 999px;
+  font-size: 0.72em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--global-base-color);
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.cmdk__input {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding: 0.25em 0;
+  border: 0;
+  outline: 0;
+  font-family: inherit;
+  font-size: 1.05em;
+  color: var(--global-text-color);
+  background: transparent;
+  box-shadow: none;
+
+  &::placeholder {
+    color: var(--cmdk-muted);
+    opacity: 1;
+  }
+
+  &:focus {
+    outline: 0;
+    box-shadow: none;
+  }
+}
+
+.cmdk__esc {
+  flex: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+
+  @media (max-width: 600px) {
+    kbd { font-size: 0.8em; }
+  }
+}
+
+.cmdk__list {
+  max-height: min(58vh, 440px);
+  margin: 0;
+  padding: 0.4em;
+  list-style: none;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.cmdk__group {
+  padding: 0.65em 0.75em 0.25em;
+  font-size: 0.68em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cmdk-muted);
+}
+
+.cmdk__item {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  padding: 0.55em 0.75em;
+  border-radius: 9px;
+  font-size: 0.9em;
+  line-height: 1.4;
+  color: var(--global-text-color);
+  cursor: pointer;
+
+  > i {
+    flex: none;
+    width: 1.25em;
+    text-align: center;
+    color: var(--cmdk-muted);
+  }
+
+  &.is-active {
+    background: var(--cmdk-active);
+
+    > i {
+      color: var(--global-base-color);
+    }
+  }
+
+  mark {
+    padding: 0;
+    color: var(--global-base-color);
+    font-weight: 700;
+    background: none;
+  }
+}
+
+.cmdk__label {
+  flex: none;
+  max-width: 70%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cmdk__hint {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  font-size: 0.8em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--cmdk-muted);
+}
+
+.cmdk__key {
+  margin-left: auto;
+}
+
+.cmdk__empty {
+  padding: 1.6em 1em;
+  font-size: 0.85em;
+  text-align: center;
+  color: var(--cmdk-muted);
+}
+
+.cmdk__foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1em;
+  padding: 0.55em 0.9em;
+  border-top: 1px solid var(--cmdk-border);
+  font-size: 0.72em;
+  color: var(--cmdk-muted);
+
+  kbd {
+    margin-right: 0.3em;
+  }
+
+  kbd + kbd {
+    margin-left: -0.15em;
+  }
+
+  @media (max-width: 600px) {
+    display: none;
+  }
+}
+
+.cmdk__foot-right {
+  margin-left: auto;
+}
+
+/* Toast for "copied" style feedback */
+
+.cmdk-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  z-index: 1001;
+  padding: 0.55em 1.1em;
+  border-radius: 999px;
+  font-family: $sans-serif;
+  font-size: 0.85em;
+  color: #fff;
+  background: #1f2a33;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+  transform: translateX(-50%);
+  animation: cmdk-rise 0.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+
+  &[hidden] {
+    display: none;
+  }
+
+  i {
+    margin-right: 0.45em;
+    color: #7ad7a4;
+  }
+}
+
+
+/* Motion */
+
+@keyframes cmdk-fade {
+  from { opacity: 0; }
+}
+
+@keyframes cmdk-pop {
+  from { opacity: 0; transform: translateY(-10px) scale(0.98); }
+}
+
+@keyframes cmdk-rise {
+  from { opacity: 0; transform: translate(-50%, 8px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cmdk__backdrop,
+  .cmdk__panel,
+  .cmdk-toast {
+    animation: none;
+  }
+}

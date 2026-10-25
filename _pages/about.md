@@ -1,10 +1,9 @@
 ---
-permalink: /
+permalink: /about/
 title: "About Me"
 excerpt: "Shengwei Liu — Applied Physical AI Researcher at Siemens; M.Eng. ECE, Cornell Tech; B.Eng. EEE, UCL. Working on Physical AI, multimodal foundation models, and efficient model inference and deployment."
 author_profile: true
 redirect_from:
-  - /about/
   - /about.html
 ---
 

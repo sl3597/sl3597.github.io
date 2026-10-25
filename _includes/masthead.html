@@ -22,7 +22,10 @@
               {% endif %}
             </li>
           {% endfor %}
-          <li id="theme-toggle" class="masthead__menu-item persist tail">
+          <li id="cmdk-trigger" class="masthead__menu-item cmdk-trigger persist tail">
+            <a role="button" tabindex="0" aria-label="Open command palette" title="Command palette"><i class="fas fa-magnifying-glass" aria-hidden="true"></i><kbd data-modkey>&#8984;</kbd><kbd>K</kbd></a>
+          </li>
+          <li id="theme-toggle" class="masthead__menu-item persist">
             <a role="button" aria-labelledby="theme-icon"><i id="theme-icon" class="fa-solid fa-sun" aria-hidden="true" title="toggle theme"></i></a>
           </li>
         </ul>
